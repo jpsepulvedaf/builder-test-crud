@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AddContact />
+    <ContactList />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ContactList from './components/ContactList.vue'
+import AddContact from "@/components/AddContact";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AddContact,
+    ContactList
   }
 }
 </script>
@@ -23,6 +25,28 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 30px;
+
+  .btn {
+    cursor: pointer;
+    background: #32719c;
+    padding: 6px 13px;
+    font-size: 14px;
+    border-radius: 17px;
+    color: white;
+    font-weight: 500;
+    &.next-btn {
+      float: right;
+    }
+    &.last-btn {
+      float:left;
+    }
+    &:hover {
+      background: #d9d9d9;
+      color: #707070;
+    }
+  }
+
+
 }
 </style>

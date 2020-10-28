@@ -1,0 +1,63 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "contacts": [
+    {
+      "id": 1,
+      "first_name": "Earlie",
+      "last_name": "Upstell",
+      "email": "eupstell0@aboutads.info"
+    },
+    {
+      "first_name": "Jaime",
+      "last_name": "Aliaga Tapia",
+      "email": "jaliaga@correo.com",
+      "id": 5
+    },
+    {
+      "first_name": "Perico",
+      "last_name": "Los Palotes Prado",
+      "email": "plpalotes@altomiel.com",
+      "id": 6
+    },
+    {
+      "first_name": "Jose",
+      "last_name": "Inostroza",
+      "email": "jinostroza@deudor.com",
+      "id": 7
+    },
+    {
+      "first_name": "Luis",
+      "last_name": "Muñoz",
+      "email": "lmunoz@alguien.com",
+      "id": 8
+    },
+    {
+      "first_name": "Raúl Esteban",
+      "last_name": "Galvez Fredes",
+      "email": "regalvezfredes@correo.com",
+      "id": 9
+    },
+    {
+      "first_name": "Manuel",
+      "last_name": "Muñoz",
+      "email": "mmunoz@correo.com",
+      "id": 11
+    }
+  ]
+}
