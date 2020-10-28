@@ -26,6 +26,13 @@ const actions = {
         const response = await ApiServer.api.getContact(state.actualPage, state.pageLimit)
         commit("setContacts", response.data)
     },
+    async updateContact({commit}, contact){
+        let cId = contact.id;
+        delete contact.id;
+        await ApiServer.api.updateContact(cId, contact)
+        const response = await ApiServer.api.getContact(state.actualPage, state.pageLimit)
+        commit("setContacts", response.data)
+    },
     async deleteContact({commit}, id){
         await ApiServer.api.deleteContact(id)
         const response = await ApiServer.api.getContact(state.actualPage, state.pageLimit)

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AddContact />
-    <ContactList />
+    <AddContact ref="contactForm" />
+    <ContactList @updateRow="updateRow" />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     AddContact,
     ContactList
+  },
+  methods: {
+    updateRow: function(contact){
+      this.$refs.contactForm.edit(contact);
+    }
   }
 }
 </script>

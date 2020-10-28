@@ -7,6 +7,7 @@
           <th>Apellido</th>
           <th>EMail</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -15,7 +16,10 @@
           <td>{{ contact.last_name }}</td>
           <td>{{ contact.email }}</td>
           <td>
-            <a class="delete-btn" @click="deleteContact(contact.id)">ELIMINAR</a>
+            <a class="minibtn update-btn" @click="update(contact)">ACTUALIZAR</a>
+          </td>
+          <td>
+            <a class="minibtn delete-btn" @click="deleteContact(contact.id)">ELIMINAR</a>
           </td>
         </tr>
       </tbody>
@@ -38,7 +42,11 @@ import {
 export default {
   name: 'ContactList',
   methods: {
-    ...mapActions(["fetchContacts", "deleteContact"]),
+    ...mapActions(["fetchContacts", "deleteContact", "updateContact"]),
+    update: function(row){
+      this.$emit("updateRow", row)
+    }
+
   },
   computed: mapGetters(["contactList", "actualPage", "pageLimit"]),
   created() {
@@ -74,19 +82,31 @@ export default {
     padding: 8px;
     vertical-align: middle;
   }
-
-  a.delete-btn {
+  a.minibtn {
     cursor: pointer;
     font-size: 10px;
     background: #ffffff;
     padding: 1px 8px;
     border-radius: 13px;
+    font-weight: 500;
+    &:hover {
+      color: white;
+    }
+  }
+  a.delete-btn {
     color: #c93939;
     border: 1px solid #c93939;
     font-weight: 500;
     &:hover {
-      background: #c93939;
-      color: white;
+      background: #bf6565;
+    }
+  }
+  a.update-btn {
+    color: #396ec9;
+    border: 1px solid #398bc9;
+    font-weight: 500;
+    &:hover {
+      background: #65a3bf;
     }
   }
 

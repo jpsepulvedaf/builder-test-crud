@@ -17,7 +17,8 @@
         <input type="text" class="form-control" v-model="email" required>
       </div>
       <div class="btn-container">
-        <input type="submit" class="btn create-btn" value="Agregar">
+        <input type="submit" class="btn btn" :value="submitBtnText">
+        <a v-if="editing" class="btn btn" value="Cancelar" @click="editing = false">Cancelar</a>
       </div>
     </form>
 
@@ -35,20 +36,47 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      contactId: null,
+      editing: false
     }
   },
   methods:{
-    ...mapActions(["createContact"]),
+    ...mapActions(["createContact", "updateContact"]),
     onContactSubmit() {
-      this.createContact({
-        first_name: this.firstName,
-        last_name: this.lastName,
-        email: this.email
-      })
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
+      if ( this.editing ) {
+        this.updateContact({
+          id: this.contactId,
+          first_name: this.firstName,
+          last_name: this.lastName,
+          email: this.email
+        })
+      }
+      else {
+        this.createContact({
+          first_name: this.firstName,
+          last_name: this.lastName,
+          email: this.email
+        })
+      }
+      this.editing = false
+      this.contactId = null
+      this.firstName = ''
+      this.lastName = ''
+      this.email = ''
+
+    },
+    edit(contact) {
+      this.editing = true;
+      this.contactId = contact.id;
+      this.firstName = contact.first_name;
+      this.lastName = contact.last_name;
+      this.email = contact.email;
+    }
+  },
+  computed: {
+    submitBtnText: function(){
+      return (this.editing ? 'Actualizar' : 'Crear')
     }
   }
 }
@@ -99,10 +127,12 @@ export default {
   }
 
 
-  .create-btn {
+  .btn {
     margin-top: 30px;
+    margin-left: 10px;
     border: 0px;
   }
+
 
 
 </style>
